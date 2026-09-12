@@ -1,0 +1,253 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$2XOrHaOEcQBxDoZRnjUgas$NCdqYoqeJzsuJjGe8tKCKYfzW3aB6eJRdMD9byXUZF0=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "Rening",
+        "first_name": "",
+        "last_name": "",
+        "email": "ren.caushi22@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-12T15:13:29.179Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$6UFkeY82EGxATYgCGnLatF$YLQI64lFfjxPwPFDuzr0hK5dkSEObTnNSdecUuSrDwg=",
+        "last_login": "2026-09-12T15:22:36.394Z",
+        "is_superuser": true,
+        "username": "Renigjeolog",
+        "first_name": "",
+        "last_name": "",
+        "email": "ren.caushi22@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-12T15:19:27.918Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$mniruDcB4n8Yp5bso7GXDw$PknHzTeAuTwUHqdRXyoD9mZi4ParUQKyQF04cKfrJLI=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "Geologyrenni",
+        "first_name": "",
+        "last_name": "",
+        "email": "ren.caushi22@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-12T21:35:49.286Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "xfk8twa8wvay94n5fkgxsxhyhz0v571f",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQRP-FsyHAbpV69N5vIOyySNXQpLQn47_bJj3oYS7z3sxbhbguJaxN5jAmdVVOnX47ivyUuoP0iPU-aZ7qMo-kd0UftOlhSvK6He7fQYmtbGsLFr0RYhY8dxbRe9O5_pIh9uLIo7NgABgNEcsWxxkhGciEkpyozxfFhzfj:1x5PYq:_-92yTxX7TKyK-aYX7SeGH0tYvZtlWJGyJIrzQSfhIQ",
+        "expire_date": "2026-09-26T15:22:36.406Z"
+    }
+},
+{
+    "model": "services.sherbimi",
+    "pk": 1,
+    "fields": {
+        "titulli": "Studime Gjeoteknike",
+        "slug": "studime-gjeoteknike",
+        "ikona_bootstrap": "bi-layers-half",
+        "pershkrimi_i_shkurtër": "Vlerësim i kapacitetit mbajtës të trojeve, shpime inxhinierike dhe analiza laboratorike për ndërtim.",
+        "permbajtja_detajuar": "Shërbimi ynë i studimeve gjeoteknike përfshin punime të plota në terren dhe laborator: shpime inxhinierike, marrje mostrash të trazuara dhe të patrazuara, prova penetracioni (SPT/CPT), si dhe përgatitjen e raportit përfundimtar gjeoteknik për marrjen e lejes së ndërtimit.",
+        "imazhi": "",
+        "renditja": 0
+    }
+},
+{
+    "model": "services.sherbimi",
+    "pk": 2,
+    "fields": {
+        "titulli": "Kërkime Hidrogjeologjike",
+        "slug": "kerkime-hidrogjeologjike",
+        "ikona_bootstrap": "bi-droplet-half",
+        "pershkrimi_i_shkurtër": "Zbulim dhe vlerësim i burimeve ujore nëntokësore, shpime pusesh dhe teste pompimi.",
+        "permbajtja_detajuar": "Realizojmë studime të detajuara hidrogjeologjike për gjetjen e ujit nëntokësor, përcaktimin e thellësisë së akuiferëve dhe cilësisë së ujit. Oferta jonë përfshin projektimin e puseve të ujit, kryerjen e testeve të pompimit për përcaktimin e prurjes si dhe përgatitjen e dokumentacionit teknik për lejet e përdorimit të ujit.",
+        "imazhi": "",
+        "renditja": 0
+    }
+},
+{
+    "model": "services.sherbimi",
+    "pk": 3,
+    "fields": {
+        "titulli": "Konsulencë & Monitorim Gjeoteknik",
+        "slug": "konsulence-monitorim-gjeoteknik",
+        "ikona_bootstrap": "bi-shield-check",
+        "pershkrimi_i_shkurtër": "Monitorim stabiliteti i shpateve, skratave dhe asistencë teknike gjatë punimeve gërmuese.",
+        "permbajtja_detajuar": "Ofrojmë asistencë teknike dhe monitorim të vazhdueshëm inxhinierik gjatë fazës së gërmimeve të thella dhe ndërtimit të strukturave mbrojtëse (mure mbajtës, pilota, ankora). Bëjmë vlerësimin e riskut të rrëshqitjeve të terreneve, monitorimin e instrumentuar të zhvendosjeve dhe konsulencë për zgjidhje teknike në kushte të vështira gjeologjike.",
+        "imazhi": "",
+        "renditja": 0
+    }
+},
+{
+    "model": "projects.projekti",
+    "pk": 1,
+    "fields": {
+        "titulli": "Studim Gjeoteknik për Rezidencë Banimi",
+        "slug": "studim-gjeoteknik-per-rezidence-banimi",
+        "klienti": "Ndërtimi SHPK",
+        "vendi": "Tiranë",
+        "latitude": null,
+        "longitude": null,
+        "pershkrimi": "Studim i plotë terreni për bazamentin e një godine 10-katëshe, duke përfshirë shpime inxhinierike deri në 25m thellësi dhe analiza laboratorike.",
+        "imazhi_kryesor": "projektet/Construction-soil-testing-scaled.jpg",
+        "data_perfundimit": "2026-09-12"
+    }
+},
+{
+    "model": "projects.projekti",
+    "pk": 2,
+    "fields": {
+        "titulli": "Shpim Pusi dhe Vlerësim Akuiferi",
+        "slug": "shpim-pusi-dhe-vleresim-akuiferi",
+        "klienti": "Kompleksi Agro-Turistik",
+        "vendi": "Durrës",
+        "latitude": null,
+        "longitude": null,
+        "pershkrimi": "Realizim shpimi hidrogjeologjik në thellësi 120m, teste pompimi dhe përcaktim i debitit optimal për furnizim me ujë.",
+        "imazhi_kryesor": "projektet/drill.JPG",
+        "data_perfundimit": "2026-09-12"
+    }
+},
+{
+    "model": "projects.projekti",
+    "pk": 3,
+    "fields": {
+        "titulli": "Testime Laboratorike të Avancuara për Infrastrukturë Rrugore",
+        "slug": "testime-laboratorike-te-avancuara-per-infrastruktu",
+        "klienti": "Lab-Geo & Construction",
+        "vendi": "Elbasan",
+        "latitude": null,
+        "longitude": null,
+        "pershkrimi": "Testime të detajuara laboratorike për kampionë guri dhe dheu: provat e ngjeshjes Proctor, përcaktimi i treguesit CBR (California Bearing Ratio), analiza granulometrike dhe testet e rezistencës në prerje për bazamentin e një aksi rrugor industrial.",
+        "imazhi_kryesor": "projektet/analiza.JPG",
+        "data_perfundimit": "2026-09-12"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-09-12T15:32:12.096Z",
+        "user": [
+            "Renigjeolog"
+        ],
+        "content_type": [
+            "services",
+            "sherbimi"
+        ],
+        "object_id": "1",
+        "object_repr": "Studime Gjeoteknike",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-09-12T15:33:08.775Z",
+        "user": [
+            "Renigjeolog"
+        ],
+        "content_type": [
+            "services",
+            "sherbimi"
+        ],
+        "object_id": "2",
+        "object_repr": "Kërkime Hidrogjeologjike",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-09-12T15:33:43.661Z",
+        "user": [
+            "Renigjeolog"
+        ],
+        "content_type": [
+            "services",
+            "sherbimi"
+        ],
+        "object_id": "3",
+        "object_repr": "Konsulencë & Monitorim Gjeoteknik",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-09-12T15:38:30.822Z",
+        "user": [
+            "Renigjeolog"
+        ],
+        "content_type": [
+            "projects",
+            "projekti"
+        ],
+        "object_id": "1",
+        "object_repr": "Studim Gjeoteknik për Rezidencë Banimi",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-09-12T15:41:09.978Z",
+        "user": [
+            "Renigjeolog"
+        ],
+        "content_type": [
+            "projects",
+            "projekti"
+        ],
+        "object_id": "2",
+        "object_repr": "Shpim Pusi dhe Vlerësim Akuiferi",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-09-12T15:50:14.172Z",
+        "user": [
+            "Renigjeolog"
+        ],
+        "content_type": [
+            "projects",
+            "projekti"
+        ],
+        "object_id": "3",
+        "object_repr": "Testime Laboratorike të Avancuara për Infrastrukturë Rrugore",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+}
+]
