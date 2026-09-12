@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & METADATAT KRYESORE -->
+    <title>{% block title %}RE-GEO Studio - Studime Gjeologjike & Gjeoteknike{% endblock %}</title>
+    <meta name="description" content="RE-GEO Studio ofron shërbime profesionale në inxhinieri gjeologjike, studime gjeoteknike për leje ndërtimi, prova laboratorike dhe hidrogjeologji në Shqipëri.">
+    <meta name="keywords" content="studim gjeoteknik, inxhinieri gjeologjike, gjeologji Tirane, leje ndertimi, prova dheu, hidrogjeologji, pusa uji, RE-GEO Studio">
+    <meta name="author" content="RE-GEO Studio">
+
+    <!-- OPEN GRAPH / FACEBOOK & WHATSAPP PREVIEW -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RE-GEO STUDIO | Zgjidhje të Avancuara Gjeoteknike">
+    <meta property="og:description" content="Studime gjeoteknike dhe hidrogjeologjike me standarde evropiane (Eurokod 7). Na kontaktoni për konsulencë.">
+    <meta property="og:image" content="{% static 'images/og-banner.jpg' %}">
+
+    <!-- Bootstrap 5 CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+
+    <!-- NAVBAR KRYESOR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-warning d-flex align-items-center" href="{% url 'home' %}">
+                <i class="bi bi-layers-half me-2"></i>RE-GEO <span class="text-white fs-5 ms-1">Studio</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold">
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Faqja Kryesore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sherbimet">Shërbimet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projektet">Projektet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blogu">Njohuri Teknike</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rreth-nesh">Rreth Nesh</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PËRMBAJTJA KRYESORE -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-5 pb-3 border-top border-warning border-3">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                
+                <!-- KOLONA 1: Logot & Përshkrimi -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-warning fw-bold mb-3"><i class="bi bi-layers-half me-2"></i>RE-GEO Studio</h5>
+                    <p class="text-secondary small">
+                        Konsulencë profesionale në inxhinieri gjeologjike, studime gjeoteknike për ndërtim, hidrogjeologji dhe testime laboratorike.
+                    </p>
+                </div>
+
+                <!-- KOLONA 2: Linke të Shpejta -->
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="text-uppercase fw-bold mb-3 text-light">Navigimi</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="text-secondary text-decoration-none">Faqja Kryesore</a></li>
+                        <li class="mb-2"><a href="#sherbimet" class="text-secondary text-decoration-none">Shërbimet</a></li>
+                        <li class="mb-2"><a href="#projektet" class="text-secondary text-decoration-none">Projektet</a></li>
+                        <li class="mb-2"><a href="#blogu" class="text-secondary text-decoration-none">Njohuri Teknike</a></li>
+                        <li class="mb-2"><a href="#rreth-nesh" class="text-secondary text-decoration-none">Rreth Nesh</a></li>
+                    </ul>
+                </div>
+
+                <!-- KOLONA 3: Ekspertiza -->
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-uppercase fw-bold mb-3 text-light">Ekspertiza</h6>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><i class="bi bi-chevron-right me-1 text-warning"></i> Studime Gjeoteknike</li>
+                        <li class="mb-2"><i class="bi bi-chevron-right me-1 text-warning"></i> Hidrogjeologji & Shpime</li>
+                        <li class="mb-2"><i class="bi bi-chevron-right me-1 text-warning"></i> Gjeologji Ndërtimi</li>
+                        <li class="mb-2"><i class="bi bi-chevron-right me-1 text-warning"></i> Raporte Teknike Zyrtare</li>
+                    </ul>
+                </div>
+
+                <!-- KOLONA 4: Standardet & Garancia -->
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-uppercase fw-bold mb-3 text-light">Standardet & Garancia</h6>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><i class="bi bi-patch-check-fill text-warning me-2"></i>Staf Inxhinierik i Licencuar</li>
+                        <li class="mb-2"><i class="bi bi-shield-check text-warning me-2"></i>Projektim sipas Eurokodeve (EC7)</li>
+                        <li class="mb-2"><i class="bi bi-file-earmark-pdf-fill text-warning me-2"></i>Raporte Zyrtare të Certifikuara</li>
+                        <li class="mb-2"><i class="bi bi-gear-wide-connected text-warning me-2"></i>Pajisje Laboratorike MFT</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary my-4">
+
+            <!-- COPYRIGHT -->
+            <div class="row align-items-center small text-secondary">
+                <div class="col-12 text-center text-md-start">
+                    &copy; {% now "Y" %} <strong>RE-GEO Studio</strong>. Të gjitha të drejtat të rezervuara.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

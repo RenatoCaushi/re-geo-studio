@@ -1,0 +1,21 @@
+# Virtual Environment
+venv/
+myEnv/
+env/
+
+# Django Database & Secrets
+db.sqlite3
+.env
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Static & Media
+staticfiles/
+media/
+
+# VS Code & IDE Settings
+.vscode/
+.idea/
