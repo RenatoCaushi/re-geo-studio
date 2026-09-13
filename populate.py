@@ -1,63 +1,109 @@
 import os
-import django
+from pathlib import Path
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
-django.setup()
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-from services.models import Sherbimi
-from projects.models import Projekti
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-78blqve-5!c67kjx$b3&*54^r7_bp!=q!6gu@#&r_hv^=r@(-^')
 
-# 1. Popullo Shërbimet
-sherbimet_data = [
-    {
-        "titulli": "Studime Gjeoteknike",
-        "pershkrimi_i_shkurtër": "Vlerësim i trojeve të ndërtimit, analizë e aftësisë mbajtëse dhe teste dinamike sipas Eurokodit 7.",
-        "ikona_bootstrap": "bi-layers-fill"
-    },
-    {
-        "titulli": "Studime Hidrogjeologjike",
-        "pershkrimi_i_shkurtër": "Kërkim i ujërave nëntokësore, shpime puseve, teste pompimi dhe vlerësim i akuiferëve.",
-        "ikona_bootstrap": "bi-droplet-half"
-    },
-    {
-        "titulli": "Laborator Gjeoteknik",
-        "pershkrimi_i_shkurtër": "Testime fiziko-mekanike të dheut dhe gurit, provat Proctor, CBR dhe analiza granulometrike.",
-        "ikona_bootstrap": "bi-diagram-3-fill"
-    }
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = 'RENDER' not in os.environ
+
+ALLOWED_HOSTS = ['*']
+
+# Application definition
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # Apps e RE-GEO Studio
+    'core',
+    'services',
+    'projects',
 ]
 
-for s in sherbimet_data:
-    Sherbimi.objects.get_or_create(
-        titulli=s["titulli"],
-        defaults=s
-    )
-
-# 2. Popullo Projektet
-projektet_data = [
-    {
-        "titulli": "Analizë Gjeoteknike Terreni",
-        "vendi": "Tiranë",
-        "pershkrimi": "Kryerja e provave të ngjeshjes dhe testimit të dheut sipas standardeve më të larta për ndërtim.",
-        "imazhi_kryesor": "images/analiza.JPG"
-    },
-    {
-        "titulli": "Shpime Hidrogjeologjike",
-        "vendi": "Durrës",
-        "pershkrimi": "Studim i thelluar i shtresave ujëmbajtëse dhe vlerësimi i burimeve nëntokësore.",
-        "imazhi_kryesor": "images/drill.JPG"
-    },
-    {
-        "titulli": "Testime Terreni & Laboratori",
-        "vendi": "Elbasan",
-        "pershkrimi": "Ekzekutim i provave CBR dhe Proctor për përgatitjen e infrastrukturës rrugore.",
-        "imazhi_kryesor": "images/Construction-soil-testing-scaled.jpg"
-    }
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Për shërbimin e skedarëve statikë në Render
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-for p in projektet_data:
-    Projekti.objects.get_or_create(
-        titulli=p["titulli"],
-        defaults=p
-    )
+ROOT_URLCONF = 'config.urls'
 
-print("Popullimi përfundoi me sukses!")
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'config.wsgi.application'
+
+# Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# Password validation
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+# Internationalization
+LANGUAGE_CODE = 'sq'
+TIME_ZONE = 'Europe/Tirane'
+USE_I18N = True
+USE_TZ = True
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise storage i rregulluar (shmang dështimin gjatë collectstatic në Render)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Email Configuration
+MAILERS = {
+    'default': {
+        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+    },
+}
