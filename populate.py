@@ -11,16 +11,17 @@ from projects.models import Projekti
 User = get_user_model()
 
 def populate():
-    # 1. Krijimi i Superuser-it
+   # 1. Krijimi ose Ndryshimi i Fjalëkalimit për Superuser
     username = "Geologyrenni"
     email = "ren.caushi22@gmail.com"
-    password = "inxhinierrenato"
+    password = "fjalekalimi_i_ri_ketu"  # Vendos fjalëkalimin tënd të ri këtu
 
-    if not User.objects.filter(username=username).exists():
-        User.objects.create_superuser(username=username, email=email, password=password)
-        print(f"Superuser '{username}' u krijua me sukses!")
-    else:
-        print(f"Superuser '{username}' ekziston tashmë.")
+    user, created = User.objects.get_or_create(username=username, defaults={'email': email})
+    user.set_password(password)
+    user.is_superuser = True
+    user.is_staff = True
+    user.save()
+    print(f"Fjalekalimi per '{username}' u perditesua me sukses!")
 
     # 2. Sherbimet
     sherbimet = [
