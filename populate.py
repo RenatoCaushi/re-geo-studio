@@ -1,5 +1,7 @@
 import os
 import django
+from django.utils.text import slugify
+from datetime import date
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
@@ -27,9 +29,14 @@ sherbimet_data = [
 ]
 
 for s in sherbimet_data:
-    Sherbimi.objects.get_or_create(
-        titulli=s["titulli"],
-        defaults=s
+    slug_val = slugify(s["titulli"])
+    Sherbimi.objects.update_or_create(
+        slug=slug_val,
+        defaults={
+            "titulli": s["titulli"],
+            "pershkrimi_i_shkurtër": s["pershkrimi_i_shkurtër"],
+            "ikona_bootstrap": s["ikona_bootstrap"],
+        }
     )
 
 # 2. Popullo Projektet
@@ -38,26 +45,36 @@ projektet_data = [
         "titulli": "Analizë Gjeoteknike Terreni",
         "vendi": "Tiranë",
         "pershkrimi": "Kryerja e provave të ngjeshjes dhe testimit të dheut sipas standardeve më të larta për ndërtim.",
-        "imazhi_kryesor": "images/analiza.JPG"
+        "imazhi_kryesor": "images/analiza.JPG",
+        "data_perfundimit": date(2024, 5, 15)
     },
     {
         "titulli": "Shpime Hidrogjeologjike",
         "vendi": "Durrës",
         "pershkrimi": "Studim i thelluar i shtresave ujëmbajtëse dhe vlerësimi i burimeve nëntokësore.",
-        "imazhi_kryesor": "images/drill.JPG"
+        "imazhi_kryesor": "images/drill.JPG",
+        "data_perfundimit": date(2024, 8, 10)
     },
     {
         "titulli": "Testime Terreni & Laboratori",
         "vendi": "Elbasan",
         "pershkrimi": "Ekzekutim i provave CBR dhe Proctor për përgatitjen e infrastrukturës rrugore.",
-        "imazhi_kryesor": "images/Construction-soil-testing-scaled.jpg"
+        "imazhi_kryesor": "images/Construction-soil-testing-scaled.jpg",
+        "data_perfundimit": date(2024, 11, 20)
     }
 ]
 
 for p in projektet_data:
-    Projekti.objects.get_or_create(
-        titulli=p["titulli"],
-        defaults=p
+    slug_val = slugify(p["titulli"])
+    Projekti.objects.update_or_create(
+        slug=slug_val,
+        defaults={
+            "titulli": p["titulli"],
+            "vendi": p["vendi"],
+            "pershkrimi": p["pershkrimi"],
+            "imazhi_kryesor": p["imazhi_kryesor"],
+            "data_perfundimit": p["data_perfundimit"],
+        }
     )
 
 print("Popullimi përfundoi me sukses!")
