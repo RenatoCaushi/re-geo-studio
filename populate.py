@@ -14,7 +14,7 @@ def populate():
    # 1. Krijimi ose Ndryshimi i Fjalëkalimit për Superuser
     username = "Geologyrenni"
     email = "ren.caushi22@gmail.com"
-    password = "fjalekalimi_i_ri_ketu"  # Vendos fjalëkalimin tënd të ri këtu
+    password = "renatoing"  # Vendos fjalëkalimin tënd të ri këtu
 
     user, created = User.objects.get_or_create(username=username, defaults={'email': email})
     user.set_password(password)
