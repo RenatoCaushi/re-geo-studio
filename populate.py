@@ -1,7 +1,7 @@
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'geo_studio.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
 
 from services.models import Sherbimi
@@ -11,23 +11,23 @@ from projects.models import Projekti
 sherbimet_data = [
     {
         "titulli": "Studime Gjeoteknike",
-        "pershkrimi_i_shkurtër": "Vlerësim i kapacitetit mbajtës të trojeve për çdo lloj strukture ndërtimore.",
-        "ikona_bootstrap": "bi-geo-alt"
+        "pershkrimi_i_shkurtër": "Vlerësim i trojeve të ndërtimit, analizë e aftësisë mbajtëse dhe teste dinamike sipas Eurokodit 7.",
+        "ikona_bootstrap": "bi-layers-fill"
     },
     {
-        "titulli": "Hidrogjeologji",
-        "pershkrimi_i_shkurtër": "Diagnostikim i akuiferëve, teste pompimi dhe vlerësim i ujërave nëntokësore.",
-        "ikona_bootstrap": "bi-droplet"
+        "titulli": "Studime Hidrogjeologjike",
+        "pershkrimi_i_shkurtër": "Kërkim i ujërave nëntokësore, shpime puseve, teste pompimi dhe vlerësim i akuiferëve.",
+        "ikona_bootstrap": "bi-droplet-half"
     },
     {
-        "titulli": "Testime Laboratorike",
-        "pershkrimi_i_shkurtër": "Prova fiziko-mekanike mbi kampione dheu dhe gurësh sipas Eurokodit.",
-        "ikona_bootstrap": "bi-layers"
+        "titulli": "Laborator Gjeoteknik",
+        "pershkrimi_i_shkurtër": "Testime fiziko-mekanike të dheut dhe gurit, provat Proctor, CBR dhe analiza granulometrike.",
+        "ikona_bootstrap": "bi-diagram-3-fill"
     }
 ]
 
 for s in sherbimet_data:
-    Sherbimi.objects.update_or_create(
+    Sherbimi.objects.get_or_create(
         titulli=s["titulli"],
         defaults=s
     )
@@ -49,13 +49,13 @@ projektet_data = [
     {
         "titulli": "Testime Terreni & Laboratori",
         "vendi": "Elbasan",
-        "pershkrimi": "Ekzekutim i provave CBR dhe Proctor për përgatitjen e infrastruktures rrugore.",
+        "pershkrimi": "Ekzekutim i provave CBR dhe Proctor për përgatitjen e infrastrukturës rrugore.",
         "imazhi_kryesor": "images/Construction-soil-testing-scaled.jpg"
     }
 ]
 
 for p in projektet_data:
-    Projekti.objects.update_or_create(
+    Projekti.objects.get_or_create(
         titulli=p["titulli"],
         defaults=p
     )
