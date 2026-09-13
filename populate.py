@@ -1,12 +1,13 @@
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 're_geo_studio.settings') # vendos emrin e projektit tënd nëse është ndryshe
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'geo_studio.settings')
 django.setup()
 
-from core.models import Projekti, Sherbimi # ndrysho core sipas emrit të app-it tënd
+from services.models import Sherbimi
+from projects.models import Projekti
 
-# 1. Plotëso Shërbimet
+# 1. Popullo Shërbimet
 sherbimet_data = [
     {
         "titulli": "Studime Gjeoteknike",
@@ -31,25 +32,25 @@ for s in sherbimet_data:
         defaults=s
     )
 
-# 2. Plotëso Projektet me emrat e imazheve te media/
+# 2. Popullo Projektet
 projektet_data = [
     {
         "titulli": "Analizë Gjeoteknike Terreni",
         "vendi": "Tiranë",
         "pershkrimi": "Kryerja e provave të ngjeshjes dhe testimit të dheut sipas standardeve më të larta për ndërtim.",
-        "imazhi_kryesor": "projektet/analiza.JPG"
+        "imazhi_kryesor": "images/analiza.JPG"
     },
     {
         "titulli": "Shpime Hidrogjeologjike",
         "vendi": "Durrës",
         "pershkrimi": "Studim i thelluar i shtresave ujëmbajtëse dhe vlerësimi i burimeve nëntokësore.",
-        "imazhi_kryesor": "projektet/drill.JPG"
+        "imazhi_kryesor": "images/drill.JPG"
     },
     {
         "titulli": "Testime Terreni & Laboratori",
         "vendi": "Elbasan",
-        "pershkrimi": "Ekzekutim i provave CBR dhe Proctor për përgatitjen e infrastrukturës rrugore.",
-        "imazhi_kryesor": "projektet/Construction-soil-testing-scaled.jpg"
+        "pershkrimi": "Ekzekutim i provave CBR dhe Proctor për përgatitjen e infrastruktures rrugore.",
+        "imazhi_kryesor": "images/Construction-soil-testing-scaled.jpg"
     }
 ]
 
@@ -59,4 +60,4 @@ for p in projektet_data:
         defaults=p
     )
 
-print("Baza e të dhënave u popullua me sukses!")
+print("Popullimi përfundoi me sukses!")
