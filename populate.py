@@ -11,10 +11,10 @@ from projects.models import Projekti
 User = get_user_model()
 
 def populate():
-   # 1. Krijimi ose Ndryshimi i Fjalëkalimit për Superuser
+    # 1. Superuser
     username = "Geologyrenni"
     email = "ren.caushi22@gmail.com"
-    password = "renatoing"  # Vendos fjalëkalimin tënd të ri këtu
+    password = "renatoing"
 
     user, created = User.objects.get_or_create(username=username, defaults={'email': email})
     user.set_password(password)
@@ -49,9 +49,9 @@ def populate():
     ]
 
     for item in sherbimet:
-        Sherbimi.objects.get_or_create(slug=item["slug"], defaults=item)
+        Sherbimi.objects.update_or_create(slug=item["slug"], defaults=item)
 
-    # 3. Projektet
+    # 3. Projektet (Përdorim update_or_create që të përditësohen rrugët e fotove)
     projektet = [
         {
             "titulli": "Studim Gjeoteknik për Rezidencë Banimi",
@@ -83,7 +83,9 @@ def populate():
     ]
 
     for item in projektet:
-        Projekti.objects.get_or_create(slug=item["slug"], defaults=item)
+        Projekti.objects.update_or_create(slug=item["slug"], defaults=item)
+
+    print("Te dhenat u populluan dhe u perditesuan me sukses!")
 
 if __name__ == '__main__':
     populate()
