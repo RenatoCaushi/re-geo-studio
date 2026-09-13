@@ -45,14 +45,14 @@ projektet_data = [
         "titulli": "Analizë Gjeoteknike Terreni",
         "vendi": "Tiranë",
         "pershkrimi": "Kryerja e provave të ngjeshjes dhe testimit të dheut sipas standardeve më të larta për ndërtim.",
-        "imazhi_kryesor": "images/analiza.JPG",
+        "imazhi_kryesor": "images/analiza.JPG",  # Shkruaje me JPG të madhe!
         "data_perfundimit": date(2024, 5, 15)
     },
     {
         "titulli": "Shpime Hidrogjeologjike",
         "vendi": "Durrës",
         "pershkrimi": "Studim i thelluar i shtresave ujëmbajtëse dhe vlerësimi i burimeve nëntokësore.",
-        "imazhi_kryesor": "images/drill.JPG",
+        "imazhi_kryesor": "images/drill.JPG",  # Shkruaje me JPG të madhe!
         "data_perfundimit": date(2024, 8, 10)
     },
     {
