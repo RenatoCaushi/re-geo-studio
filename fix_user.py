@@ -8,13 +8,12 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-# Krijon ose përditëson të dyja variantet e username-it
-for username in ['Geologyrenni', 'geologyrenni']:
-    u, created = User.objects.get_or_create(username=username)
-    u.set_password('otanerstudio')
-    u.is_superuser = True
-    u.is_staff = True
-    u.is_active = True
-    u.save()
+# Krijon një superuser të ri me të dhëna të reja
+u, created = User.objects.get_or_create(username='admin_new')
+u.set_password('pass123456')
+u.is_superuser = True
+u.is_staff = True
+u.is_active = True
+u.save()
 
-print("BOTH_USERS_RESET_SUCCESSFULLY")
+print("NEW_SUPERUSER_CREATED")
