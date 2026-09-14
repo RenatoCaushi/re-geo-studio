@@ -22,4 +22,4 @@ class CoreConfig(AppConfig):
     name = 'core'
 
     def ready(self):
-        post_migrate.connect(create_default_superuser, sender=self)
+        post_migrate.connect(create_default_superuser)
