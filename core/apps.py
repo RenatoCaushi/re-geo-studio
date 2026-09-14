@@ -6,7 +6,6 @@ def create_default_superuser(sender, **kwargs):
     from django.contrib.auth import get_user_model
     User = get_user_model()
     
-    # Lexon nga Environment Variables të Render-it ose përdor vlerat default
     username = os.environ.get('DJANGO_SUPERUSER_USERNAME', 'Geologyrenni')
     password = os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'otanerstudio')
     
@@ -16,7 +15,7 @@ def create_default_superuser(sender, **kwargs):
     u.is_staff = True
     u.is_active = True
     u.save()
-    print(f"--> SUPERUSER {username} U PËRDITËSUA ME SUKSES TE BAZA E TË DHËNAVE!")
+    print(f"--> SUPERUSER {username} U PËRDITËSUA ME SUKSES!")
 
 class CoreConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
