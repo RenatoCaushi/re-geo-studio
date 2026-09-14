@@ -2,9 +2,8 @@
 set -o errexit
 
 pip install -r requirements.txt
-
 python manage.py collectstatic --no-input || true
 python manage.py migrate
 
-# Ekzekuton script-in e fjalëkalimit
+# Rregullon fjalëkalimin e adminit
 python fix_user.py
