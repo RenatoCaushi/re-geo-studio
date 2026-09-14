@@ -19,7 +19,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
+    # Cloudinary Storage (duhet të jetë MBI staticfiles)
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
 
     # Apps e RE-GEO Studio
     'core',
@@ -97,9 +101,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # WhiteNoise storage i rregulluar (shmang dështimin gjatë collectstatic në Render)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-# Media files
+# Media files & Cloudinary Configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'oornuwp6'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '975767264233752'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'iis2W8k6iKbS6Uvb_Fz6Qkk3bZ8'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Email Configuration
 MAILERS = {
