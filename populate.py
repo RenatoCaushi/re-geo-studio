@@ -1,80 +1,55 @@
 import os
 import django
-from django.utils.text import slugify
-from datetime import date
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'geo_studio.settings')
 django.setup()
 
-from services.models import Sherbimi
-from projects.models import Projekti
+from services.models import Service, Project
 
-# 1. Popullo Shërbimet
-sherbimet_data = [
-    {
-        "titulli": "Studime Gjeoteknike",
-        "pershkrimi_i_shkurtër": "Vlerësim i trojeve të ndërtimit, analizë e aftësisë mbajtëse dhe teste dinamike sipas Eurokodit 7.",
-        "ikona_bootstrap": "bi-layers-fill"
-    },
-    {
-        "titulli": "Studime Hidrogjeologjike",
-        "pershkrimi_i_shkurtër": "Kërkim i ujërave nëntokësore, shpime puseve, teste pompimi dhe vlerësim i akuiferëve.",
-        "ikona_bootstrap": "bi-droplet-half"
-    },
-    {
-        "titulli": "Laborator Gjeoteknik",
-        "pershkrimi_i_shkurtër": "Testime fiziko-mekanike të dheut dhe gurit, provat Proctor, CBR dhe analiza granulometrike.",
-        "ikona_bootstrap": "bi-diagram-3-fill"
-    }
-]
+def run():
+    print("Po pastrohen të dhënat e vjetra...")
+    Project.objects.all().delete()
+    Service.objects.all().delete()
 
-for s in sherbimet_data:
-    slug_val = slugify(s["titulli"])
-    Sherbimi.objects.update_or_create(
-        slug=slug_val,
-        defaults={
-            "titulli": s["titulli"],
-            "pershkrimi_i_shkurtër": s["pershkrimi_i_shkurtër"],
-            "ikona_bootstrap": s["ikona_bootstrap"],
-        }
+    print("Po krijohen 3 shërbimet dhe projektet kryesore...")
+
+    # 1. Shërbimi 1
+    s1 = Service.objects.create(
+        title="Studime Hidrogjeologjike",
+        description="Vlerësime profesionale të burimeve ujore dhe hidrogjeologjisë."
+    )
+    Project.objects.create(
+        service=s1,
+        title="Studim Hidrogjeologjik",
+        description="Detaje dhe vlerësim për burimet ujore underground.",
+        image="images/Construction-soil-testing-scaled.jpg"
     )
 
-# 2. Popullo Projektet
-projektet_data = [
-    {
-        "titulli": "Analizë Gjeoteknike Terreni",
-        "vendi": "Tiranë",
-        "pershkrimi": "Kryerja e provave të ngjeshjes dhe testimit të dheut sipas standardeve më të larta për ndërtim.",
-        "imazhi_kryesor": "images/analiza.JPG",  # Shkruaje me JPG të madhe!
-        "data_perfundimit": date(2024, 5, 15)
-    },
-    {
-        "titulli": "Shpime Hidrogjeologjike",
-        "vendi": "Durrës",
-        "pershkrimi": "Studim i thelluar i shtresave ujëmbajtëse dhe vlerësimi i burimeve nëntokësore.",
-        "imazhi_kryesor": "images/drill.JPG",  # Shkruaje me JPG të madhe!
-        "data_perfundimit": date(2024, 8, 10)
-    },
-    {
-        "titulli": "Testime Terreni & Laboratori",
-        "vendi": "Elbasan",
-        "pershkrimi": "Ekzekutim i provave CBR dhe Proctor për përgatitjen e infrastrukturës rrugore.",
-        "imazhi_kryesor": "images/Construction-soil-testing-scaled.jpg",
-        "data_perfundimit": date(2024, 11, 20)
-    }
-]
-
-for p in projektet_data:
-    slug_val = slugify(p["titulli"])
-    Projekti.objects.update_or_create(
-        slug=slug_val,
-        defaults={
-            "titulli": p["titulli"],
-            "vendi": p["vendi"],
-            "pershkrimi": p["pershkrimi"],
-            "imazhi_kryesor": p["imazhi_kryesor"],
-            "data_perfundimit": p["data_perfundimit"],
-        }
+    # 2. Shërbimi 2
+    s2 = Service.objects.create(
+        title="Laborator Gjeoteknik",
+        description="Analiza fiziko-mekanike të dherave dhe shkëmbinjve."
+    )
+    Project.objects.create(
+        service=s2,
+        title="Analiza Laboratorike",
+        description="Testime të detajuara gjeoteknike për dherat.",
+        image="images/analiza.JPG"
     )
 
-print("Popullimi përfundoi me sukses!")
+    # 3. Shërbimi 3
+    s3 = Service.objects.create(
+        title="Shpime Gjeologo-Inxhinierike",
+        description="Shpime karkotazhi dhe sondazhe me pajisje moderne."
+    )
+    Project.objects.create(
+        service=s3,
+        title="Shpime Gjeologjike",
+        description="Sondazhe terreni dhe marrje kampionesh shkëmbore.",
+        image="images/drill.JPG"
+    )
+
+    print("--> 3 Shërbimet dhe Projektet u krijuan me sukses!")
+
+if __name__ == '__main__':
+    run()
