@@ -6,22 +6,16 @@ django.setup()
 
 from django.apps import apps
 
-# Gjen modelet automatikisht te 'services' ose 'core'
-try:
-    Service = apps.get_model('services', 'Service')
-except LookupError:
-    try:
-        Service = apps.get_model('services', 'Sherbimi')
-    except LookupError:
-        Service = apps.get_model('core', 'Service')
+# Gjen modelet automatikisht nga çdo aplikacion i regjistruar
+all_models = {m.__name__.lower(): m for m in apps.get_models()}
 
-try:
-    Project = apps.get_model('services', 'Project')
-except LookupError:
-    try:
-        Project = apps.get_model('projects', 'Project')
-    except LookupError:
-        Project = apps.get_model('core', 'Project')
+# Kërkon për Service/Sherbimi dhe Project/Projekt
+Service = all_models.get('service') or all_models.get('sherbimi')
+Project = all_models.get('project') or all_models.get('projekt')
+
+if not Service or not Project:
+    print(f"Modelet e gjetura në sistem: {list(all_models.keys())}")
+    raise Exception("Nuk u gjetën dot modelet e Service ose Project!")
 
 def run():
     print("--> Po pastrohen të dhënat e vjetra...")
