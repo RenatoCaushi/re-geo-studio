@@ -4,7 +4,24 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
 
-from services.models import Service, Project
+from django.apps import apps
+
+# Gjen modelet automatikisht te 'services' ose 'core'
+try:
+    Service = apps.get_model('services', 'Service')
+except LookupError:
+    try:
+        Service = apps.get_model('services', 'Sherbimi')
+    except LookupError:
+        Service = apps.get_model('core', 'Service')
+
+try:
+    Project = apps.get_model('services', 'Project')
+except LookupError:
+    try:
+        Project = apps.get_model('projects', 'Project')
+    except LookupError:
+        Project = apps.get_model('core', 'Project')
 
 def run():
     print("--> Po pastrohen të dhënat e vjetra...")
