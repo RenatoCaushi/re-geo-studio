@@ -6,7 +6,6 @@ django.setup()
 
 from django.apps import apps
 
-# Marrja e saktë e modeleve sipas emrave që dolën te log-u
 Sherbimi = apps.get_model('services', 'Sherbimi')
 Projekti = apps.get_model('projects', 'Projekti')
 
@@ -20,8 +19,7 @@ def run():
     # 1. Shërbimi & Projekti 1
     s1 = Sherbimi.objects.create(
         titulli="Studime Hidrogjeologjike",
-        pershkrimi_i_shkurter="Vlerësime profesionale të burimeve ujore dhe hidrogjeologjisë.",
-        ikona_bootstrap="bi-droplet-half"
+        pershkrimi="Vlerësime profesionale të burimeve ujore dhe hidrogjeologjisë."
     )
     Projekti.objects.create(
         sherbimi=s1,
@@ -34,8 +32,7 @@ def run():
     # 2. Shërbimi & Projekti 2
     s2 = Sherbimi.objects.create(
         titulli="Laborator Gjeoteknik",
-        pershkrimi_i_shkurter="Analiza fiziko-mekanike të dherave dhe shkëmbinjve.",
-        ikona_bootstrap="bi-diagram-3-fill"
+        pershkrimi="Analiza fiziko-mekanike të dherave dhe shkëmbinjve."
     )
     Projekti.objects.create(
         sherbimi=s2,
@@ -48,8 +45,7 @@ def run():
     # 3. Shërbimi & Projekti 3
     s3 = Sherbimi.objects.create(
         titulli="Shpime Gjeologo-Inxhinierike",
-        pershkrimi_i_shkurter="Shpime karkotazhi dhe sondazhe me pajisje moderne.",
-        ikona_bootstrap="bi-layers-fill"
+        pershkrimi="Shpime karkotazhi dhe sondazhe me pajisje moderne."
     )
     Projekti.objects.create(
         sherbimi=s3,
